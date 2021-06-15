@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace TinyECS.Interfaces
 {
-    public struct SystemId
+    public class SystemId
     {
         public static SystemId Invalid = new SystemId(uint.MaxValue);
 
@@ -125,7 +125,7 @@ namespace TinyECS.Interfaces
         /// <typeparam name="T">A specific type to which current system will be casted</typeparam>
         /// <returns>The method returns system's value which the iterator points to</returns>
 
-        T Get<T>() where T : struct, ISystem;
+        T Get<T>() where T : class, ISystem;
 
         /// <summary>
         /// The method returns a reference to ISystem which the iterator points to

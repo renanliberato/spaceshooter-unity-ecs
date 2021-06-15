@@ -14,7 +14,7 @@ namespace TinyECS.Impls
 
     public class EventManager: IEventManager
     {
-        protected struct TListenerEntry
+        protected class TListenerEntry
         {
             public Type           mEventType;
 
@@ -40,7 +40,7 @@ namespace TinyECS.Impls
         /// <returns></returns>
 
         public uint Subscribe<T>(IEventListener eventListener)
-            where T : struct
+            where T : class
         {
             if (eventListener == null)
             {
@@ -89,7 +89,7 @@ namespace TinyECS.Impls
         /// the broadcasting will be executed</param>
 
         public void Notify<T>(T eventData, uint destListenerId = uint.MaxValue)
-            where T : struct
+            where T : class
         {
             Type currEventType = typeof(T);
 

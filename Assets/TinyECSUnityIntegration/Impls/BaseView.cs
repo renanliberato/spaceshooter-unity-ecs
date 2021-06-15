@@ -6,25 +6,25 @@ using UnityEngine;
 namespace TinyECSUnityIntegration.Impls
 {
     /// <summary>
-    /// struct TOnViewWaitForInitEventComponent
+    /// class TOnViewWaitForInitEventComponent
     /// 
-    /// The structure describes a parameters of an event which is generated with BaseView
+    /// The classure describes a parameters of an event which is generated with BaseView
     /// when some instance of it has awaken and need to be registered
     /// </summary>
 
-    public struct TOnViewWaitForInitEventComponent: IComponent
+    public class TOnViewWaitForInitEventComponent: IComponent
     {
         public BaseView mView;
     }
 
 
     /// <summary>
-    /// struct TViewComponent
+    /// class TViewComponent
     /// 
-    /// The structure contains a reference to a view which is linked to the entity
+    /// The classure contains a reference to a view which is linked to the entity
     /// </summary>
 
-    public struct TViewComponent: IComponent
+    public class TViewComponent: IComponent
     {
         public BaseView mView;
     }

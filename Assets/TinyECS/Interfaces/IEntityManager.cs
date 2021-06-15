@@ -36,7 +36,7 @@ namespace TinyECS.Interfaces
         /// <param name="componentInitializer">A type's value that is used to initialize fields of a new component</param>
         /// <typeparam name="T">A type of a component that should be attached</typeparam>
 
-        void AddComponent<T>(EntityId entityId, T componentInitializer = default(T)) where T : struct, IComponent;
+        void AddComponent<T>(EntityId entityId, T componentInitializer = default(T)) where T : IComponent;
 
         /// <summary>
         /// The method removes a component of a specified type
@@ -44,7 +44,7 @@ namespace TinyECS.Interfaces
         /// <param name="entityId">Entity's identifier</param>
         /// <typeparam name="T">A type of a component that should be removed</typeparam>
 
-        void RemoveComponent<T>(EntityId entityId) where T : struct, IComponent;
+        void RemoveComponent<T>(EntityId entityId) where T : IComponent;
 
         /// <summary>
         /// The method removes all components that are attached to the entity with the specified identifier
@@ -62,7 +62,7 @@ namespace TinyECS.Interfaces
         /// <returns>The method returns a component of a given type if it belongs to
         /// the specified entity</returns>
 
-        T GetComponent<T>(EntityId entityId) where T : struct, IComponent;
+        T GetComponent<T>(EntityId entityId) where T : IComponent;
 
         /// <summary>
         /// The method checks up whether a given entity has specified component or not
@@ -71,7 +71,7 @@ namespace TinyECS.Interfaces
         /// <param name="entityId">Entity's identifier</param>
         /// <returns>The method returns true if the entity has the given component, false in other cases</returns>
 
-        bool HasComponent<T>(EntityId entityId) where T : struct, IComponent;
+        bool HasComponent<T>(EntityId entityId) where T : IComponent;
 
         /// <summary>
         /// The method checks up whether a given entity has specified component or not

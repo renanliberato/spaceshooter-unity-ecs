@@ -38,7 +38,7 @@
         /// <typeparam name="T">A specific type to which current component will be casted</typeparam>
         /// <returns>The method returns component's value which the iterator points to</returns>
 
-        T Get<T>() where T: struct, IComponent;
+        T Get<T>() where T: IComponent;
 
         /// <summary>
         /// The method returns a reference to IComponent which the iterator points to

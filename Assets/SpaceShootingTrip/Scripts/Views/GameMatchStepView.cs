@@ -1,4 +1,5 @@
 ﻿using SpaceShootingTrip.Components;
+using System;
 using System.Collections.Generic;
 using TinyECS.Impls;
 using TinyECS.Interfaces;
@@ -9,12 +10,13 @@ using UnityEngine.UI;
 
 namespace SpaceShootingTrip.Views
 {
-    public class GameMatchStepView : BaseStaticView, IEventListener<TComponentChangedEvent<MatchStepComponent>>
+    public class GameMatchStepView : BaseStaticView, IEventListener<TComponentChangedEvent<MatchStepComponent>>, IEventListener<TComponentChangedEvent<MatchLevelComponent>>
     {
+        public Text levelText;
+        public Image timeToNextLevelBar;
         public GameObject StartGameView;
         public GameObject EndGameView;
         public GameObject ControlsView;
-        public Button RestartButton;
 
         private readonly IList<uint> _eventManagerSubscriptions = new List<uint>();
 
@@ -27,9 +29,11 @@ namespace SpaceShootingTrip.Views
         {
             IEntity linkedEntity = mWorldContext.GetEntityById(entityId);
 
+            linkedEntity.AddComponent(new MatchLevelComponent { level = 1, timeToNextLevel = 5f, levelTimeInterval = 5f });
             linkedEntity.AddComponent(new MatchStepComponent { step = 0 });
 
             _eventManagerSubscriptions.Add(eventManager.Subscribe<TComponentChangedEvent<MatchStepComponent>>(this));
+            _eventManagerSubscriptions.Add(eventManager.Subscribe<TComponentChangedEvent<MatchLevelComponent>>(this));
         }
 
         public void OnDestroy()
@@ -63,6 +67,20 @@ namespace SpaceShootingTrip.Views
         public void RestartGame()
         {
             SceneManager.LoadScene(0);
+        }
+
+        public void OnEvent(TComponentChangedEvent<MatchLevelComponent> eventData)
+        {
+            levelText.text = eventData.mValue.level.ToString();
+
+            //float minutes = Mathf.FloorToInt(eventData.mValue.timeToNextLevel / 60);
+            //float seconds = Mathf.FloorToInt(eventData.mValue.timeToNextLevel % 60);
+            //timeToNextLevelBar.rectTransform.offsetMax = new Vector2();
+            timeToNextLevelBar.rectTransform.sizeDelta = new Vector2(
+                Math.Min(170f, ((eventData.mValue.levelTimeInterval - eventData.mValue.timeToNextLevel) / eventData.mValue.levelTimeInterval) * 170f),
+                timeToNextLevelBar.rectTransform.sizeDelta.y
+            );
+            //timeToNextLevelText.text = $"{minutes.ToString("00")}:{seconds.ToString("00")}";
         }
     }
 }

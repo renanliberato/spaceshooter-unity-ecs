@@ -1,4 +1,5 @@
 ﻿using SpaceShootingTrip.Components;
+using System;
 using TinyECS.Interfaces;
 using TinyECSUnityIntegration.Interfaces;
 using UnityEngine;
@@ -33,7 +34,9 @@ namespace SpaceShootingTrip.Systems
                     var bullet = mFactory.Spawn(mPrefab, Vector2.zero, Quaternion.identity, null);
 
                     bullet.AddComponent(new PositionComponent { value = entity.GetComponent<PositionComponent>().value + new Vector3(0, 0.3f, 0) });
-                    entity.AddComponent(new AutoShootComponent { interval = shoot.interval * 0.98f, timeToNextShoot = shoot.interval * 0.98f });
+
+
+                    entity.AddComponent(new AutoShootComponent { interval = shoot.interval, timeToNextShoot = shoot.interval });
 
                     return;
                 };

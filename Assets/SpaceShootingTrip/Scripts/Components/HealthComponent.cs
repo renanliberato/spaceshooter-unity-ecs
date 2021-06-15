@@ -2,7 +2,7 @@
 
 namespace SpaceShootingTrip.Components
 {
-    public struct HealthComponent : IComponent
+    public class HealthComponent : IComponent
     {
         public int current;
         public int max;

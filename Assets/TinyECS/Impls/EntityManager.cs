@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using TinyECS.Interfaces;
-using UnityEngine;
+
 
 namespace TinyECS.Impls
 {
     /// <summary>
     /// class EntityManager
     /// 
-    /// The class is a main infrastructure's element which manages with all entities
+    /// The class is a main infraclassure's element which manages with all entities
     /// in the library
     /// </summary>
 
@@ -33,7 +33,7 @@ namespace TinyECS.Impls
         protected uint                mNumOfActiveEntities;
 
         /// <summary>
-        /// The main constructor of the class
+        /// The main conclassor of the class
         /// </summary>
         /// <param name="componentManager"></param>
 
@@ -153,7 +153,7 @@ namespace TinyECS.Impls
         /// <param name="componentInitializer">A type's value that is used to initialize fields of a new component</param>
         /// <typeparam name="T">A type of a component that should be attached</typeparam>
 
-        public void AddComponent<T>(EntityId entityId, T componentInitializer = default(T)) where T : struct, IComponent
+        public void AddComponent<T>(EntityId entityId, T componentInitializer = default(T)) where T : IComponent
         {
             mComponentManager.AddComponent<T>(entityId, componentInitializer);
         }
@@ -164,7 +164,7 @@ namespace TinyECS.Impls
         /// <param name="entityId">Entity's identifier</param>
         /// <typeparam name="T">A type of a component that should be removed</typeparam>
 
-        public void RemoveComponent<T>(EntityId entityId) where T : struct, IComponent
+        public void RemoveComponent<T>(EntityId entityId) where T : IComponent
         {
             mComponentManager.RemoveComponent<T>(entityId);
         }
@@ -189,7 +189,7 @@ namespace TinyECS.Impls
         /// the specified entity</returns>
 
         public T GetComponent<T>(EntityId entityId) 
-            where T : struct, IComponent
+            where T : IComponent
         {
             return mComponentManager.GetComponent<T>(entityId);
         }
@@ -202,7 +202,7 @@ namespace TinyECS.Impls
         /// <returns>The method returns true if the entity has the given component, false in other cases</returns>
 
         public bool HasComponent<T>(EntityId entityId) 
-            where T : struct, IComponent
+            where T : IComponent
         {
             return mComponentManager.HasComponent<T>(entityId);
         }

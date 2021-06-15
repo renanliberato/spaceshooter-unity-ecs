@@ -9,7 +9,7 @@ namespace SpaceShootingTrip.Components
         End = 2,
     }
 
-    public struct MatchStepComponent :IComponent
+    public class MatchStepComponent :IComponent
     {
         public MatchSteps step;
     }

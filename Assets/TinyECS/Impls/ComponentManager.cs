@@ -46,7 +46,7 @@ namespace TinyECS.Impls
             /// <typeparam name="T">A specific type to which current component will be casted</typeparam>
             /// <returns>The method returns component's value which the iterator points to</returns>
 
-            public T Get<T>() where T : struct, IComponent
+            public T Get<T>() where T : IComponent
             {
                 return (T)Get();
             }
@@ -107,7 +107,7 @@ namespace TinyECS.Impls
         }
 
         /// <summary>
-        /// The method is used to register the given entity within the internal data structure, but
+        /// The method is used to register the given entity within the internal data classure, but
         /// withou actual allocating memory for components
         /// </summary>
         /// <param name="entityId">Entity's identifier</param>
@@ -133,7 +133,7 @@ namespace TinyECS.Impls
         /// <param name="componentInitializer">A type's value that is used to initialize fields of a new component</param>
         /// <typeparam name="T">A type of a component that should be attached</typeparam>
 
-        public void AddComponent<T>(EntityId entityId, T componentInitializer) where T : struct, IComponent
+        public void AddComponent<T>(EntityId entityId, T componentInitializer) where T : IComponent
         {
             uint id = (uint)entityId;
 
@@ -195,7 +195,7 @@ namespace TinyECS.Impls
         /// <returns>The method returns a component of a given type if it belongs to
         /// the specified entity</returns>
 
-        public T GetComponent<T>(EntityId entityId) where T : struct, IComponent
+        public T GetComponent<T>(EntityId entityId) where T : IComponent
         {
             uint id = (uint)entityId;
 
@@ -235,7 +235,7 @@ namespace TinyECS.Impls
         /// <param name="entityId">Entity's identifier</param>
         /// <typeparam name="T">A type of a component that should be removed</typeparam>
 
-        public void RemoveComponent<T>(EntityId entityId) where T : struct, IComponent
+        public void RemoveComponent<T>(EntityId entityId) where T : IComponent
         {
             uint id = (uint)entityId;
 
@@ -292,7 +292,7 @@ namespace TinyECS.Impls
         /// <param name="entityId">Entity's identifier</param>
         /// <returns>The method returns true if the entity has the given component, false in other cases</returns>
 
-        public bool HasComponent<T>(EntityId entityId) where T : struct, IComponent
+        public bool HasComponent<T>(EntityId entityId) where T : IComponent
         {
             return HasComponent(entityId, typeof(T));
         }

@@ -21,7 +21,7 @@ namespace TinyECS.Impls
         protected IEntityManager mEntityManager;
 
         /// <summary>
-        /// The main constructor with parameters
+        /// The main conclassor with parameters
         /// </summary>
         /// <param name="entityManager">A reference to IEntityManager's implementation</param>
         /// <param name="id">An identifier of a entity (unique)</param>
@@ -37,7 +37,7 @@ namespace TinyECS.Impls
         }
 
         /// <summary>
-        /// The default constructor is prohibited
+        /// The default conclassor is prohibited
         /// </summary>
 
         protected Entity()
@@ -50,7 +50,7 @@ namespace TinyECS.Impls
         /// <typeparam name="T">A type of a component that should be attached</typeparam>
         /// <param name="componentInitializer">A type's value that is used to initialize fields of a new component</param>
 
-        public void AddComponent<T>(T componentInitializer = default(T)) where T : struct, IComponent
+        public void AddComponent<T>(T componentInitializer = default(T)) where T : IComponent
         {
             mEntityManager.AddComponent<T>(mId, componentInitializer);
         }
@@ -60,7 +60,7 @@ namespace TinyECS.Impls
         /// </summary>
         /// <typeparam name="T">A type of a component that should be removed</typeparam>
 
-        public void RemoveComponent<T>() where T : struct, IComponent
+        public void RemoveComponent<T>() where T : IComponent
         {
             mEntityManager.RemoveComponent<T>(mId);
         }
@@ -83,7 +83,7 @@ namespace TinyECS.Impls
         /// the specified entity</returns>
 
         public T GetComponent<T>() 
-            where T : struct, IComponent
+            where T : IComponent
         {
             return mEntityManager.GetComponent<T>(mId);
         }
@@ -95,7 +95,7 @@ namespace TinyECS.Impls
         /// <returns>The method returns true if the entity has the given component, false in other cases</returns>
 
         public bool HasComponent<T>() 
-            where T : struct, IComponent
+            where T : IComponent
         {
             return mEntityManager.HasComponent<T>(mId);
         }

@@ -29,7 +29,7 @@ namespace SpaceShootingTrip.Views
 
             linkedEntity.AddComponent(new PositionComponent { value = new UnityEngine.Vector2(1, 5) });
             linkedEntity.AddComponent(new VelocityComponent { value = new Vector2(0, 7) });
-            linkedEntity.AddComponent(new DestroyOnLeaveScreenComponent { });
+            linkedEntity.AddComponent(new DestroyOnLeaveScreenComponent { limit = 1f });
 
             _eventManagerSubscriptions.Add(eventManager.Subscribe<TComponentChangedEvent<PositionComponent>>(this));
             _eventManagerSubscriptions.Add(eventManager.Subscribe<TEntityDestroyedEvent>(this));

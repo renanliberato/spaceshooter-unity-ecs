@@ -4,19 +4,19 @@ using TinyECS.Interfaces;
 
 namespace TinyECS.Impls
 {
-    public struct TNewEntityCreatedEvent: IEvent
+    public class TNewEntityCreatedEvent: IEvent
     {
         public EntityId mEntityId;
     }
 
-    public struct TEntityDestroyedEvent: IEvent
+    public class TEntityDestroyedEvent: IEvent
     {
         public EntityId mEntityId;
 
         public string   mEntityName;
     }
 
-    public struct TNewComponentAddedEvent: IEvent
+    public class TNewComponentAddedEvent: IEvent
     {
         public EntityId mOwnerId;
 
@@ -24,7 +24,7 @@ namespace TinyECS.Impls
     }
 
 
-    public struct TComponentChangedEvent<T>: IEvent
+    public class TComponentChangedEvent<T>: IEvent
     {
         public EntityId mOwnerId;
 
@@ -32,7 +32,7 @@ namespace TinyECS.Impls
     }
 
 
-    public struct TComponentRemovedEvent: IEvent
+    public class TComponentRemovedEvent: IEvent
     {
         public EntityId mOwnerId;
 

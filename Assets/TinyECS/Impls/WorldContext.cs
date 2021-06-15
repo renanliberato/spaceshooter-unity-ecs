@@ -100,7 +100,7 @@ namespace TinyECS.Impls
         /// <returns> The method returns an entity with specified component. Note that the component should be unique </returns>
 
         public IEntity GetUniqueEntity<T>()
-            where T : struct, IUniqueComponent
+            where T : class, IUniqueComponent
         {
             var entities = mEntityManager.GetEntitiesWithAny(typeof(T));
 

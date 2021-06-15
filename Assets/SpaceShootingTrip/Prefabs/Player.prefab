@@ -47,6 +47,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1770132c19044e44fbfe4f1291e7229b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health1Image: {fileID: 0}
+  health2Image: {fileID: 0}
+  health3Image: {fileID: 0}
+  moveLeftButton: {fileID: 0}
+  moveRightButton: {fileID: 0}
 --- !u!114 &586804778
 MonoBehaviour:
   m_ObjectHideFlags: 0

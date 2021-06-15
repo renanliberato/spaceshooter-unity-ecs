@@ -2,7 +2,7 @@
 
 namespace SpaceShootingTrip.Components
 {
-    public struct PlayerControlsComponent : IComponent
+    public class PlayerControlsComponent : IComponent
     {
         public bool moveLeft;
         public bool moveRight;

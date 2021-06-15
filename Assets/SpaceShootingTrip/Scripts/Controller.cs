@@ -35,6 +35,7 @@ namespace SpaceShootingTrip
             mSystemManager.RegisterSystem(new PlayerInputSystem(mWorldContext));
             mSystemManager.RegisterSystem(new SpawnEnemiesSystem(mWorldContext, enemyPrefab, goFactory));
             mSystemManager.RegisterSystem(new MovementSystem(mWorldContext));
+            mSystemManager.RegisterSystem(new TargetMovementSystem(mWorldContext));
             mSystemManager.RegisterSystem(new EnemyAutoShootSystem(mWorldContext, enemyBulletPrefab, goFactory));
             mSystemManager.RegisterSystem(new PlayerAutoShootSystem(mWorldContext, playerBulletPrefab, goFactory));
             mSystemManager.RegisterSystem(new DecreaseHealthOnBulletCollisionSystem(mWorldContext));

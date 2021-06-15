@@ -4,21 +4,21 @@
 namespace TinyECS.Impls
 {
     /// <summary>
-    /// struct TDisposableComponent
+    /// class TDisposableComponent
     /// 
-    /// The structure is a component-flag that makes an entity on to which it is assigned disposable one
+    /// The classure is a component-flag that makes an entity on to which it is assigned disposable one
     /// </summary>
 
-    public struct TDisposableComponent: IComponent { }
+    public class TDisposableComponent: IComponent { }
 
 
     /// <summary>
-    /// struct TEntityLifetimeComponent
+    /// class TEntityLifetimeComponent
     /// 
-    /// This structure should be used in tie with TDisposableComponent to keep entity for a few extra frames
+    /// This classure should be used in tie with TDisposableComponent to keep entity for a few extra frames
     /// </summary>
 
-    public struct TEntityLifetimeComponent: IComponent
+    public class TEntityLifetimeComponent: IComponent
     {
         public uint mCounter; ///< A number of frames to live
     }

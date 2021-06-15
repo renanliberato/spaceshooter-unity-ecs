@@ -5,12 +5,12 @@ using System.Collections.Generic;
 namespace TinyECS.Interfaces
 {
     /// <summary>
-    /// structure TWorldContextStats
+    /// classure TWorldContextStats
     /// 
-    /// The structure contains statistics about a particular world's context
+    /// The classure contains statistics about a particular world's context
     /// </summary>
 
-    public struct TWorldContextStats
+    public class TWorldContextStats
     {
         public uint mNumOfActiveEntities;
 
@@ -93,7 +93,7 @@ namespace TinyECS.Interfaces
         /// <typeparam name="T">A type of a component that should be retrieved</typeparam>
         /// <returns> The method returns an entity with specified component. Note that the component should be unique </returns>
 
-        IEntity GetUniqueEntity<T>() where T: struct, IUniqueComponent;
+        IEntity GetUniqueEntity<T>() where T: class, IUniqueComponent;
 
         /// <summary>
         /// The method returns a reference to IEventManager implementation

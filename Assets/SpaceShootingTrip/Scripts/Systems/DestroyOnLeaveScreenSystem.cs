@@ -21,8 +21,9 @@ namespace SpaceShootingTrip.Systems
             {
                 var entity = mWorldContext.GetEntityById(entityIds[i]);
                 var y = entity.GetComponent<Components.PositionComponent>().value.y;
-                var goingUp = Math.Sign(entity.GetComponent<Components.VelocityComponent>().value.y) > 0;
-                if ((goingUp && y > 10) || y < -10)
+                var limit = entity.GetComponent<Components.DestroyOnLeaveScreenComponent>().limit;
+
+                if (y > 5 * limit || y < -5 * limit)
                 {
                     mWorldContext.DestroyEntity(entity.Id);
                 }

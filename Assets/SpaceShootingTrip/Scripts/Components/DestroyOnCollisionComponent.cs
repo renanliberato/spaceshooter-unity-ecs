@@ -2,7 +2,7 @@
 
 namespace SpaceShootingTrip.Components
 {
-    public struct DestroyOnCollisionComponent : IComponent
+    public class DestroyOnCollisionComponent : IComponent
     {
     }
 }

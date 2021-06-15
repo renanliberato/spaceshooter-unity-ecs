@@ -29,7 +29,7 @@ namespace TinyECS.Impls
             /// <typeparam name="T">A specific type to which current system will be casted</typeparam>
             /// <returns>The method returns system's value which the iterator points to</returns>
 
-            public T Get<T>() where T : struct, ISystem
+            public T Get<T>() where T : class, ISystem
             {
                 return (T)Get();
             }

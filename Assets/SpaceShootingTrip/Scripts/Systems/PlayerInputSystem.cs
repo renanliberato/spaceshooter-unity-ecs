@@ -25,13 +25,13 @@ namespace SpaceShootingTrip.Systems
 
             var xSpeed = (playerinput.moveLeft ? -1 : playerinput.moveRight ? 1 : 0) * 4;
             var pos = player.GetComponent<PositionComponent>();
-            if (xSpeed > 0 && pos.value.x >= 2)
+            if (xSpeed > 0 && pos.value.x >= 1.75)
             {
                 player.AddComponent(new VelocityComponent { value = new Vector2(0, 0) });
                 return;
             }
             
-            if (xSpeed < 0 && pos.value.x <= -2)
+            if (xSpeed < 0 && pos.value.x <= -1.75)
             {
                 player.AddComponent(new VelocityComponent { value = new Vector2(0, 0) });
                 return;

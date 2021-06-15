@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace SpaceShootingTrip.Components
 {
-    public struct VelocityComponent : IComponent
+    public class VelocityComponent : IComponent
     {
         public Vector2 value;
     }

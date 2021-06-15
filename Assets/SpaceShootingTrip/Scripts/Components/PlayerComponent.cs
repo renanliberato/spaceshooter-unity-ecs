@@ -2,7 +2,7 @@
 
 namespace SpaceShootingTrip.Components
 {
-    public struct PlayerComponent :IComponent
+    public class PlayerComponent :IComponent
     {
         public int shipType;
     }
