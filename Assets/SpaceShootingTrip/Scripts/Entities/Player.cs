@@ -17,7 +17,6 @@ namespace SpaceShootingTrip.Entities
             linkedEntity.AddComponent(new PlayerControlsComponent { moveLeft = false, moveRight = false });
             linkedEntity.AddComponent(new HealthComponent { current = 3, max = 3 });
             linkedEntity.AddComponent(new PositionComponent { value = initialPosition });
-            linkedEntity.AddComponent(new CollidesWithComponent { component = typeof(EnemyComponent) });
             linkedEntity.AddComponent(new VelocityComponent { value = new Vector2() });
             linkedEntity.AddComponent(new AutoShootComponent { interval = 0.5f, timeToNextShoot = 0.5f });
         }

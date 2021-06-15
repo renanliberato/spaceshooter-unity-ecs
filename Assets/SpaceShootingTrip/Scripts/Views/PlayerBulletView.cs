@@ -28,7 +28,6 @@ namespace SpaceShootingTrip.Views
             IEntity linkedEntity = mWorldContext.GetEntityById(entityId);
 
             linkedEntity.AddComponent(new PositionComponent { value = new UnityEngine.Vector2(1, 5) });
-            linkedEntity.AddComponent(new CollidesWithComponent { component = typeof(EnemyComponent) });
             linkedEntity.AddComponent(new VelocityComponent { value = new Vector2(0, 7) });
             linkedEntity.AddComponent(new DestroyOnLeaveScreenComponent { });
 
