@@ -37,7 +37,7 @@ namespace SpaceShootingTrip.Systems
                 return;
             }
 
-            player.AddComponent(new VelocityComponent { value = new Vector2(xSpeed, 0) });
+            player.AddComponent(new VelocityComponent { value = new Vector2(xSpeed / Time.timeScale, 0) });
         }
     }
 }

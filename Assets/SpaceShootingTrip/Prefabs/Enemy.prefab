@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02b0286680dd733459a668be4b4aeb78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletTrailColor: {r: 0.36078432, g: 0.20784314, b: 0.7764706, a: 1}
 --- !u!212 &7396945247091735652
 SpriteRenderer:
   m_ObjectHideFlags: 0

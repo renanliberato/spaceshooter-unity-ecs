@@ -302,13 +302,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 7474842559629069107, guid: 0b0fe1ece8fcea9419016dcea83ee8ed,
     type: 3}
-  enemyStraightLineBulletPrefab: {fileID: 5150594689869598486, guid: 951f78d060e863c4fabc5cc380604442,
-    type: 3}
-  enemyDirectionalBulletPrefab: {fileID: 5150594689869598486, guid: 736c101e412e20b4d875174d9dd14738,
-    type: 3}
-  playerStraightLineBulletPrefab: {fileID: 5150594689869598486, guid: e91d7076e5e754843a68434f0f8104d0,
-    type: 3}
-  playerDirectionalBulletPrefab: {fileID: 5150594689869598486, guid: 4a818b4db88061943aed08e666025f92,
+  bulletPrefab: {fileID: 5150594689869598486, guid: 21bb6affc51b96e419832161352910e6,
     type: 3}
 --- !u!4 &420106739
 Transform:

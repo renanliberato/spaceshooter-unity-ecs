@@ -12,8 +12,6 @@ namespace SpaceShootingTrip.Systems
         protected GameObject mPrefab;
         protected IGameObjectFactory mFactory;
 
-        private float _timeUntilNext;
-        private float _interval;
         private int _numberOfEnemies;
 
         public SpawnEnemiesSystem(IWorldContext worldContext, GameObject prefab, IGameObjectFactory factory)
@@ -21,7 +19,6 @@ namespace SpaceShootingTrip.Systems
             mWorldContext = worldContext;
             mPrefab = prefab;
             mFactory = factory;
-            _interval = 2.5f;
             _numberOfEnemies = 3;
         }
 

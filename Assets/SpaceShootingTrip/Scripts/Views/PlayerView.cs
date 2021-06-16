@@ -18,6 +18,8 @@ namespace SpaceShootingTrip.Views
         public Button moveLeftButton;
         public Button moveRightButton;
 
+        public Color bulletTrailColor;
+
         private readonly IList<uint> _eventManagerSubscriptions = new List<uint>();
 
         public void OnEvent(TComponentChangedEvent<PositionComponent> eventData)
@@ -46,7 +48,7 @@ namespace SpaceShootingTrip.Views
         {
             IEntity linkedEntity = mWorldContext.GetEntityById(entityId);
 
-            Player.Initialize(linkedEntity, transform.position);
+            Player.Initialize(linkedEntity, transform.position, bulletTrailColor);
 
             _eventManagerSubscriptions.Add(eventManager.Subscribe<TEntityDestroyedEvent>(this));
             _eventManagerSubscriptions.Add(eventManager.Subscribe<TComponentChangedEvent<PositionComponent>>(this));

@@ -7,7 +7,7 @@ namespace SpaceShootingTrip.Entities
 {
     public class Enemy
     {
-        public static void Initialize(IEntity linkedEntity, int level)
+        public static void Initialize(IEntity linkedEntity, int level, Color bulletTrailColor)
         {
             int health = 1 + (int)Math.Floor((level / 5.0));
             var shootIncrease = UnityEngine.Random.Range(1f, 3f) * (1 + level / 10);
@@ -15,10 +15,12 @@ namespace SpaceShootingTrip.Entities
             linkedEntity.AddComponent(new EnemyComponent { shipType = 1 });
             linkedEntity.AddComponent(new HealthComponent { current = health, max = health });
             linkedEntity.AddComponent(new PositionComponent { value = new Vector2(UnityEngine.Random.Range(-2f, 2f), UnityEngine.Random.Range(5f, 7.5f)) });
-            linkedEntity.AddComponent(new TargetPositionComponent { position = new Vector2(UnityEngine.Random.Range(-2f, 2f), UnityEngine.Random.Range(1.5f, 3f)), step = UnityEngine.Random.Range(0.15f, 1f) });
+            linkedEntity.AddComponent(new TargetPositionComponent { position = new Vector2(UnityEngine.Random.Range(-2f, 2f), UnityEngine.Random.Range(1.5f, 3f)), step = UnityEngine.Random.Range(0.4f, 2f) });
             linkedEntity.AddComponent(new AutoShootComponent { interval = shootIncrease, timeToNextShoot = shootIncrease });
             linkedEntity.AddComponent(new RotationComponent { angle = 180 });
             linkedEntity.AddComponent(new StraightLineBulletShootingComponent { });
+            linkedEntity.AddComponent(new BulletGameObjectTag { tag = "EnemyBullet" });
+            linkedEntity.AddComponent(new BulletTrailColor { color = bulletTrailColor });
         }
     }
 }

@@ -52,6 +52,7 @@ MonoBehaviour:
   health3Image: {fileID: 0}
   moveLeftButton: {fileID: 0}
   moveRightButton: {fileID: 0}
+  bulletTrailColor: {r: 0.654902, g: 0.63529414, b: 0.24313726, a: 1}
 --- !u!114 &586804778
 MonoBehaviour:
   m_ObjectHideFlags: 0

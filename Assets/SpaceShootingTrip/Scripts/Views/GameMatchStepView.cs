@@ -34,6 +34,8 @@ namespace SpaceShootingTrip.Views
         {
             foreach (var id in _eventManagerSubscriptions)
                 _eventManager.Unsubscribe(id);
+
+            Time.timeScale = 1;
         }
 
         public void OnEvent(TComponentChangedEvent<MatchStepComponent> eventData)

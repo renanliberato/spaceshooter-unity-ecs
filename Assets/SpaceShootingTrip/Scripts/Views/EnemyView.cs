@@ -10,6 +10,8 @@ namespace SpaceShootingTrip.Views
 {
     public class EnemyView : BaseDynamicView, IEventListener<TComponentChangedEvent<PositionComponent>>, IEventListener<TEntityDestroyedEvent>
     {
+        public Color bulletTrailColor;
+
         private readonly IList<uint> _eventManagerSubscriptions = new List<uint>();
 
         public void OnEvent(TComponentChangedEvent<PositionComponent> eventData)
@@ -30,7 +32,7 @@ namespace SpaceShootingTrip.Views
         {
             IEntity linkedEntity = mWorldContext.GetEntityById(entityId);
 
-            Enemy.Initialize(linkedEntity, mWorldContext.GetSingleEntityWithAll(typeof(MatchLevelComponent)).GetComponent<MatchLevelComponent>().level);
+            Enemy.Initialize(linkedEntity, mWorldContext.GetSingleEntityWithAll(typeof(MatchLevelComponent)).GetComponent<MatchLevelComponent>().level, bulletTrailColor);
 
             _eventManagerSubscriptions.Add(eventManager.Subscribe<TComponentChangedEvent<PositionComponent>>(this));
             _eventManagerSubscriptions.Add(eventManager.Subscribe<TEntityDestroyedEvent>(this));

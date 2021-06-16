@@ -1,23 +1,20 @@
 ﻿using SpaceShootingTrip.Components;
-using System;
 using TinyECS.Interfaces;
-using TinyECSUnityIntegration.Interfaces;
-using UnityEngine;
 
 namespace SpaceShootingTrip.Systems
 {
-    public class PlayerAutoShootSystem : IUpdateSystem
+    public class AutoShootSystem : IUpdateSystem
     {
         protected IWorldContext mWorldContext;
 
-        public PlayerAutoShootSystem(IWorldContext worldContext)
+        public AutoShootSystem(IWorldContext worldContext)
         {
             mWorldContext = worldContext;
         }
 
         public void Update(float deltaTime)
         {
-            var ids = mWorldContext.GetEntitiesWithAll(typeof(PlayerComponent), typeof(AutoShootComponent));
+            var ids = mWorldContext.GetEntitiesWithAll(typeof(AutoShootComponent));
 
             IEntity entity;
 

@@ -9,10 +9,7 @@ namespace SpaceShootingTrip
     public class Controller : MonoBehaviour
     {
         public GameObject enemyPrefab;
-        public GameObject enemyStraightLineBulletPrefab;
-        public GameObject enemyDirectionalBulletPrefab;
-        public GameObject playerStraightLineBulletPrefab;
-        public GameObject playerDirectionalBulletPrefab;
+        public GameObject bulletPrefab;
 
         protected IWorldContext mWorldContext;
 
@@ -35,10 +32,8 @@ namespace SpaceShootingTrip
             mSystemManager.RegisterSystem(new MovementSystem(mWorldContext));
             mSystemManager.RegisterSystem(new DirectionalMovementSystem(mWorldContext));
             mSystemManager.RegisterSystem(new TargetMovementSystem(mWorldContext));
-            mSystemManager.RegisterSystem(new EnemyAutoShootSystem(mWorldContext));
-            mSystemManager.RegisterSystem(new PlayerAutoShootSystem(mWorldContext));
-            mSystemManager.RegisterSystem(new EnemyShootingSystem(mWorldContext, enemyDirectionalBulletPrefab, enemyStraightLineBulletPrefab, goFactory));
-            mSystemManager.RegisterSystem(new PlayerShootingSystem(mWorldContext, playerDirectionalBulletPrefab, playerStraightLineBulletPrefab, goFactory));
+            mSystemManager.RegisterSystem(new AutoShootSystem(mWorldContext));
+            mSystemManager.RegisterSystem(new ShootingSystem(mWorldContext, bulletPrefab, goFactory));
             mSystemManager.RegisterSystem(new DecreaseHealthOnBulletCollisionSystem(mWorldContext));
             mSystemManager.RegisterSystem(new DestroyOnLeaveScreenSystem(mWorldContext));
             mSystemManager.RegisterSystem(new DestroyOnHealthZeroSystem(mWorldContext));
