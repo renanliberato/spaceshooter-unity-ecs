@@ -41,7 +41,7 @@ namespace SpaceShootingTrip.Systems
             if (timeToNext <= 0 && mWorldContext.GetEntitiesWithAll(typeof(EnemyComponent)).Count == 0)
             {
                 timeToNext = (interval *= 1.05f);
-                _numberOfEnemies = Math.Min(50, (levelNumber += 1));
+                _numberOfEnemies = Math.Min(50, (levelNumber += 1) * 2);
 
                 for (var i = 0; i < _numberOfEnemies; i++)
                 {
@@ -56,7 +56,7 @@ namespace SpaceShootingTrip.Systems
 
             if (mWorldContext.GetSingleEntityWithAll(typeof(MatchStepComponent)).GetComponent<MatchStepComponent>().step == MatchSteps.InMatch)
                 Time.timeScale = Mathf.Lerp(Time.timeScale, 10, 0.00001f);
-
+                
             levelEntity.AddComponent(new MatchLevelComponent { level = levelNumber, levelTimeInterval = interval, timeToNextLevel = timeToNext });
         }
     }

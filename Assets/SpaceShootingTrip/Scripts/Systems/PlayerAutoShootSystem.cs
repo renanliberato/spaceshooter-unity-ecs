@@ -9,14 +9,10 @@ namespace SpaceShootingTrip.Systems
     public class PlayerAutoShootSystem : IUpdateSystem
     {
         protected IWorldContext mWorldContext;
-        protected GameObject mPrefab;
-        protected IGameObjectFactory mFactory;
 
-        public PlayerAutoShootSystem(IWorldContext worldContext, GameObject prefab, IGameObjectFactory factory)
+        public PlayerAutoShootSystem(IWorldContext worldContext)
         {
             mWorldContext = worldContext;
-            mPrefab = prefab;
-            mFactory = factory;
         }
 
         public void Update(float deltaTime)
@@ -31,10 +27,7 @@ namespace SpaceShootingTrip.Systems
                 var shoot = entity.GetComponent<AutoShootComponent>();
                 if (shoot.timeToNextShoot <= 0)
                 {
-                    var bullet = mFactory.Spawn(mPrefab, Vector2.zero, Quaternion.identity, null);
-
-                    bullet.AddComponent(new PositionComponent { value = entity.GetComponent<PositionComponent>().value + new Vector3(0, 0.3f, 0) });
-
+                    entity.AddComponent(new ShootingComponent { });
 
                     entity.AddComponent(new AutoShootComponent { interval = shoot.interval, timeToNextShoot = shoot.interval });
 

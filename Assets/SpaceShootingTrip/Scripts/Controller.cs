@@ -1,9 +1,4 @@
 ﻿using SpaceShootingTrip.Systems;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TinyECS.Impls;
 using TinyECS.Interfaces;
 using TinyECSUnityIntegration.Impls;
@@ -14,8 +9,10 @@ namespace SpaceShootingTrip
     public class Controller : MonoBehaviour
     {
         public GameObject enemyPrefab;
-        public GameObject enemyBulletPrefab;
-        public GameObject playerBulletPrefab;
+        public GameObject enemyStraightLineBulletPrefab;
+        public GameObject enemyDirectionalBulletPrefab;
+        public GameObject playerStraightLineBulletPrefab;
+        public GameObject playerDirectionalBulletPrefab;
 
         protected IWorldContext mWorldContext;
 
@@ -29,15 +26,19 @@ namespace SpaceShootingTrip
 
             WorldContextsManagerUtils.CreateWorldContextManager(mWorldContext, "WorldContextManager_System");
             SystemManagerObserverUtils.CreateSystemManagerObserver(mSystemManager, "SystemManagerObserver_System");
+            
             // register our systems here
             var goFactory = new GameObjectFactory(mWorldContext);
             mSystemManager.RegisterSystem(new RegisterViewSystem(mWorldContext));
             mSystemManager.RegisterSystem(new PlayerInputSystem(mWorldContext));
             mSystemManager.RegisterSystem(new SpawnEnemiesSystem(mWorldContext, enemyPrefab, goFactory));
             mSystemManager.RegisterSystem(new MovementSystem(mWorldContext));
+            mSystemManager.RegisterSystem(new DirectionalMovementSystem(mWorldContext));
             mSystemManager.RegisterSystem(new TargetMovementSystem(mWorldContext));
-            mSystemManager.RegisterSystem(new EnemyAutoShootSystem(mWorldContext, enemyBulletPrefab, goFactory));
-            mSystemManager.RegisterSystem(new PlayerAutoShootSystem(mWorldContext, playerBulletPrefab, goFactory));
+            mSystemManager.RegisterSystem(new EnemyAutoShootSystem(mWorldContext));
+            mSystemManager.RegisterSystem(new PlayerAutoShootSystem(mWorldContext));
+            mSystemManager.RegisterSystem(new EnemyShootingSystem(mWorldContext, enemyDirectionalBulletPrefab, enemyStraightLineBulletPrefab, goFactory));
+            mSystemManager.RegisterSystem(new PlayerShootingSystem(mWorldContext, playerDirectionalBulletPrefab, playerStraightLineBulletPrefab, goFactory));
             mSystemManager.RegisterSystem(new DecreaseHealthOnBulletCollisionSystem(mWorldContext));
             mSystemManager.RegisterSystem(new DestroyOnLeaveScreenSystem(mWorldContext));
             mSystemManager.RegisterSystem(new DestroyOnHealthZeroSystem(mWorldContext));

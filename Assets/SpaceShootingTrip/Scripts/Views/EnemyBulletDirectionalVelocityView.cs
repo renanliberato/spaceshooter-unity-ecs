@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using TinyECS.Impls;
 using TinyECS.Interfaces;
 using TinyECSUnityIntegration.Impls;
-using UnityEngine;
 
 namespace SpaceShootingTrip.Views
 {
-    public class EnemyBulletView : BaseDynamicView, IEventListener<TComponentChangedEvent<PositionComponent>>, IEventListener<TEntityDestroyedEvent>
+    public class EnemyBulletDirectionalVelocityView : BaseDynamicView, IEventListener<TComponentChangedEvent<PositionComponent>>, IEventListener<TEntityDestroyedEvent>
     {
         private readonly IList<uint> _eventManagerSubscriptions = new List<uint>();
 
@@ -28,7 +27,8 @@ namespace SpaceShootingTrip.Views
             IEntity linkedEntity = mWorldContext.GetEntityById(entityId);
 
             linkedEntity.AddComponent(new PositionComponent { value = new UnityEngine.Vector2(transform.position.x, transform.position.y) });
-            linkedEntity.AddComponent(new VelocityComponent { value = new Vector2(0, -3) });
+            linkedEntity.AddComponent(new DirectionalVelocityComponent { up = 3 });
+            linkedEntity.AddComponent(new RotationComponent { angle = transform.rotation.eulerAngles.z });
             linkedEntity.AddComponent(new DestroyOnLeaveScreenComponent { limit = 1f });
 
             _eventManagerSubscriptions.Add(eventManager.Subscribe<TComponentChangedEvent<PositionComponent>>(this));

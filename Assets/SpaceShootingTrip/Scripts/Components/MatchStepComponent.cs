@@ -4,7 +4,6 @@ namespace SpaceShootingTrip.Components
 {
     public enum MatchSteps
     {
-        Start = 0,
         InMatch = 1,
         End = 2,
     }

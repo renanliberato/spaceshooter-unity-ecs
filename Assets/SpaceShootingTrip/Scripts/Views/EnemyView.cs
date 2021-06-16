@@ -30,7 +30,7 @@ namespace SpaceShootingTrip.Views
         {
             IEntity linkedEntity = mWorldContext.GetEntityById(entityId);
 
-            Enemy.Initialize(linkedEntity);
+            Enemy.Initialize(linkedEntity, mWorldContext.GetSingleEntityWithAll(typeof(MatchLevelComponent)).GetComponent<MatchLevelComponent>().level);
 
             _eventManagerSubscriptions.Add(eventManager.Subscribe<TComponentChangedEvent<PositionComponent>>(this));
             _eventManagerSubscriptions.Add(eventManager.Subscribe<TEntityDestroyedEvent>(this));
