@@ -265,6 +265,8 @@ MonoBehaviour:
     type: 3}
   bulletPrefab: {fileID: 5150594689869598486, guid: 21bb6affc51b96e419832161352910e6,
     type: 3}
+  healingStarPrefab: {fileID: 4076857311228658420, guid: ea5af306eb7b38a4bbc28b336b65d7d5,
+    type: 3}
 --- !u!4 &420106739
 Transform:
   m_ObjectHideFlags: 0

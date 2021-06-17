@@ -1,5 +1,6 @@
 ﻿using SpaceShootingTrip.Components;
 using SpaceShootingTrip.Entities;
+using System;
 using System.Collections.Generic;
 using TinyECS.Impls;
 using TinyECS.Interfaces;
@@ -100,6 +101,17 @@ namespace SpaceShootingTrip.Views
                 
                 if (player != null)
                     player.AddComponent<CollidedWithBulletComponent>();
+
+                Destroy(collision.gameObject);
+            } else if (collision.gameObject.CompareTag("HealingStar"))
+            {
+                var player = mWorldContext.GetEntityById(LinkedEntityId);
+                
+                if (player != null)
+                {
+                    var health = player.GetComponent<HealthComponent>();
+                    player.AddComponent(new HealthComponent { current = Math.Min(health.max, health.current + 1), max = health.max });
+                }
 
                 Destroy(collision.gameObject);
             }

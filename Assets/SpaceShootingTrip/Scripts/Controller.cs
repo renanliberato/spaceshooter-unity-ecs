@@ -10,6 +10,7 @@ namespace SpaceShootingTrip
     {
         public GameObject enemyPrefab;
         public GameObject bulletPrefab;
+        public GameObject healingStarPrefab;
 
         protected IWorldContext mWorldContext;
 
@@ -29,6 +30,7 @@ namespace SpaceShootingTrip
             mSystemManager.RegisterSystem(new RegisterViewSystem(mWorldContext));
             mSystemManager.RegisterSystem(new PlayerInputSystem(mWorldContext));
             mSystemManager.RegisterSystem(new SpawnEnemiesSystem(mWorldContext, enemyPrefab, goFactory));
+            mSystemManager.RegisterSystem(new SpawnHealingStarsSystem(mWorldContext, healingStarPrefab, goFactory));
             mSystemManager.RegisterSystem(new MovementSystem(mWorldContext));
             mSystemManager.RegisterSystem(new DirectionalMovementSystem(mWorldContext));
             mSystemManager.RegisterSystem(new TargetMovementSystem(mWorldContext));
