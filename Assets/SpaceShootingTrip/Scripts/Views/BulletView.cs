@@ -9,7 +9,7 @@ namespace SpaceShootingTrip.Views
 {
     public class BulletView : BaseDynamicView, IEventListener<TComponentChangedEvent<PositionComponent>>, IEventListener<TComponentChangedEvent<GameObjectTag>>, IEventListener<TComponentChangedEvent<TrailColor>>, IEventListener<TEntityDestroyedEvent>
     {
-        public ParticleSystem particleSystem;
+        public ParticleSystem innerParticleSystem;
 
         private readonly IList<uint> _eventManagerSubscriptions = new List<uint>();
 
@@ -29,7 +29,7 @@ namespace SpaceShootingTrip.Views
         {
             if (eventData.mOwnerId == LinkedEntityId)
             {
-                var main = particleSystem.main;
+                var main = innerParticleSystem.main;
 
                 main.startColor = new ParticleSystem.MinMaxGradient
                 {
